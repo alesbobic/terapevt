@@ -87,8 +87,9 @@ if (!empty($errors)) {
  * CONTACT_TO je prejemnik sporočila.
  * CONTACT_FROM naj bo praviloma e-naslov iste domene kot spletna stran.
  */
-$to = getenv('CONTACT_TO') ?: 'alesbobic@gmail.com';
-$from = getenv('CONTACT_FROM') ?: 'tomaz@terapevt.si';
+
+$to = 'alesbobic@gmail.com';
+$from = 'tomaz@terapevt.si';
 $fromName = 'terapevt.si';
 $subject = 'Novo povpraševanje iz terapevt.si';
 
