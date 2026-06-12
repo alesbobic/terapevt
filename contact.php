@@ -113,11 +113,26 @@ $body .= "Sporočilo:\n{$message}\n";
  * $smtpPort = 587;
  * $smtpSecure = 'tls';
  */
+/*
 $smtpHost = getenv('SMTP_HOST') ?: '';
 $smtpUser = getenv('SMTP_USER') ?: '';
 $smtpPass = getenv('SMTP_PASS') ?: '';
 $smtpPort = getenv('SMTP_PORT') ?: 587;
 $smtpSecure = getenv('SMTP_SECURE') ?: 'tls';
+*/
+/* SMTP Domenca */
+
+$smtpHost = 'mail.terapevt.si';
+$smtpUser = 'tomaz@terapevt.si';
+
+/*
+ * VPIŠI GESLO POŠTNEGA PREDALA
+ * isto geslo kot ga uporabljaš za Webmail
+ */
+$smtpPass = 'BZ@5Yk#Wjnm@m';
+
+$smtpPort = 465;
+$smtpSecure = 'ssl';
 
 try {
     $phpmailerFile = __DIR__ . '/PHPMailer-master/class.phpmailer.php';
