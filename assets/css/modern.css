@@ -39,3 +39,57 @@
 .cookie-actions{display:flex;gap:10px;align-items:center;justify-content:flex-end}
 .cookie-actions .btn{min-height:46px;padding:0 18px;font-size:14px}
 @media (max-width:760px){.cookie-card{grid-template-columns:1fr;padding:18px}.cookie-actions{justify-content:stretch}.cookie-actions .btn{flex:1}}
+
+/*povecaj pisavo A-, A+*/
+.font-size-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 12px;
+}
+
+.font-size-btn {
+  border: 1px solid rgba(120, 105, 90, 0.22);
+  background: #fffaf4;
+  color: #6f6258;
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.font-size-btn:hover {
+  background: #f4eadf;
+  color: #4f453d;
+}
+
+body.font-large {
+  font-size: 18px;
+}
+
+body.font-xlarge {
+  font-size: 20px;
+}
+
+body.font-large .hero-text,
+body.font-large .section-text,
+body.font-large p,
+body.font-large li {
+  font-size: 1.08em;
+}
+
+body.font-xlarge .hero-text,
+body.font-xlarge .section-text,
+body.font-xlarge p,
+body.font-xlarge li {
+  font-size: 1.16em;
+}
+
+@media (max-width: 768px) {
+  .font-size-tools {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}

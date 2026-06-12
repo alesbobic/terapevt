@@ -136,3 +136,42 @@ if (form) {
     });
   }
 })();
+
+document.addEventListener("DOMContentLoaded", function () {
+  const body = document.body;
+  const decreaseBtn = document.getElementById("fontDecrease");
+  const increaseBtn = document.getElementById("fontIncrease");
+
+  const savedFontSize = localStorage.getItem("terapevtFontSize");
+
+  if (savedFontSize === "font-large" || savedFontSize === "font-xlarge") {
+    body.classList.add(savedFontSize);
+  }
+
+  if (increaseBtn) {
+    increaseBtn.addEventListener("click", function () {
+      const isLarge = body.classList.contains("font-large");
+      const isXLarge = body.classList.contains("font-xlarge");
+
+      body.classList.remove("font-large", "font-xlarge");
+
+      if (!isLarge && !isXLarge) {
+        body.classList.add("font-large");
+        localStorage.setItem("terapevtFontSize", "font-large");
+      } else if (isLarge) {
+        body.classList.add("font-xlarge");
+        localStorage.setItem("terapevtFontSize", "font-xlarge");
+      } else {
+        body.classList.add("font-xlarge");
+        localStorage.setItem("terapevtFontSize", "font-xlarge");
+      }
+    });
+  }
+
+  if (decreaseBtn) {
+    decreaseBtn.addEventListener("click", function () {
+      body.classList.remove("font-large", "font-xlarge");
+      localStorage.removeItem("terapevtFontSize");
+    });
+  }
+});
