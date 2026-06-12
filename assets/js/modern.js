@@ -136,7 +136,6 @@ if (form) {
     });
   }
 })();
-
 document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
   const decreaseBtn = document.getElementById("fontDecrease");

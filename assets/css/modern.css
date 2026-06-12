@@ -40,7 +40,7 @@
 .cookie-actions .btn{min-height:46px;padding:0 18px;font-size:14px}
 @media (max-width:760px){.cookie-card{grid-template-columns:1fr;padding:18px}.cookie-actions{justify-content:stretch}.cookie-actions .btn{flex:1}}
 
-/*povecaj pisavo A-, A+*/
+/*povecaj pisavo A-, A+ */
 .font-size-tools {
   display: inline-flex;
   align-items: center;
