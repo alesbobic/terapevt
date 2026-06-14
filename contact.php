@@ -88,7 +88,7 @@ if (!empty($errors)) {
  * CONTACT_FROM naj bo praviloma e-naslov iste domene kot spletna stran.
  */
 
-$to = 'alesbobic@gmail.com';
+$to = 'tomaz@terapevt.si';
 $from = 'tomaz@terapevt.si';
 $fromName = 'terapevt.si';
 $subject = 'Novo povpraševanje iz terapevt.si';
@@ -124,15 +124,16 @@ $smtpSecure = getenv('SMTP_SECURE') ?: 'tls';
 
 $smtpHost = 'mail.terapevt.si';
 $smtpUser = 'tomaz@terapevt.si';
-
-/*
- * VPIŠI GESLO POŠTNEGA PREDALA
- * isto geslo kot ga uporabljaš za Webmail
- */
 $smtpPass = 'BZ@5Yk#Wjnm@m';
-
 $smtpPort = 465;
 $smtpSecure = 'ssl';
+
+/*
+$mail->Debugoutput = function($str, $level) {
+    echo nl2br(htmlentities($str)) . "<br>";
+};
+$mail->SMTPDebug = 2;
+*/
 
 try {
     $phpmailerFile = __DIR__ . '/PHPMailer-master/class.phpmailer.php';
@@ -164,6 +165,8 @@ try {
         $mail->isSMTP();
         $mail->Host = $smtpHost;
         $mail->SMTPAuth = true;
+        $mail->SMTPAutoTLS = false;
+        $mail->AuthType = 'LOGIN';
         $mail->Username = $smtpUser;
         $mail->Password = $smtpPass;
         $mail->SMTPSecure = $smtpSecure; // tls ali ssl
@@ -198,7 +201,8 @@ try {
     }
 
     respond('success', $okMessage);
+    
 } catch (Exception $e) {
     error_log('Contact form error: ' . $e->getMessage());
-    respond('danger', $errorMessage, $e->getMessage());
+    respond('danger', $errorMessage);
 }

@@ -20,33 +20,57 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
 const form = document.querySelector('#contact-form');
+
 if (form) {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+
     const messages = form.querySelector('.messages');
+
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
+
     const button = form.querySelector('button[type="submit"]');
     const original = button.textContent;
+
     button.disabled = true;
     button.textContent = 'Pošiljam ...';
+
     try {
+
       const response = await fetch(form.action, {
         method: 'POST',
-        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        },
         body: new FormData(form)
       });
+
       const data = await response.json();
-      const type = data.type === 'success' ? 'success' : 'danger';
-      messages.innerHTML = `<div class="alert alert-${type}">${data.message}</div>`;
-      if (type === 'success') form.reset();
+
+      const type = data.type === 'success'
+        ? 'success'
+        : 'danger';
+
+      messages.innerHTML =
+        `<div class="alert alert-${type}">${data.message}</div>`;
+
+      if (type === 'success') {
+        form.reset();
+      }
+
     } catch (error) {
-      messages.innerHTML = '<div class="alert alert-danger">Sporočila trenutno ni bilo mogoče poslati. Poskusite pozneje ali pokličite.</div>';
+
+      messages.innerHTML =
+        '<div class="alert alert-danger">Sporočila trenutno ni bilo mogoče poslati. Poskusite pozneje ali pokličite.</div>';
+
     } finally {
+
       button.disabled = false;
       button.textContent = original;
+
     }
   });
 }
